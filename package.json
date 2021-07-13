@@ -1,6 +1,6 @@
 {
   "name": "zerva-module-template",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "🌱 Zerva module template",
   "main": "index.js",
   "funding": {
