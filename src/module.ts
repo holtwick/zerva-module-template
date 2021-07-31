@@ -6,10 +6,15 @@ import { on, emit, register } from "zerva"
 const name = "counter"
 const log = Logger(`zerva:${name}`)
 
-export function useCounter() {
-  log.info("use counter")
-  register("counter", ["http"])
-  let counter = 0
+interface Config {
+  start?: number
+}
+
+export function useCounter(config: Config) {
+  const { start = 0 } = config
+  log.info(`use ${name}`)
+  register(name, ["http"])
+  let counter = start
   on("httpInit", ({ get }) => {
     get("/", async () => {
       await emit("counterIncrement", ++counter)
