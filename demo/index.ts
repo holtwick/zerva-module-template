@@ -7,8 +7,11 @@ import {
   LoggerFileHandler,
   LoggerNodeHandler,
   LogLevel,
+  setupEnv,
   valueToInteger,
 } from "zeed"
+import { on, serve, useHttp } from "zerva"
+import { useCounter } from "zerva-module-template"
 
 Logger.setHandlers([
   LoggerFileHandler("zerva.log", {
@@ -24,11 +27,8 @@ Logger.setHandlers([
   }),
 ])
 
+setupEnv()
 const log = Logger("app")
-
-import { emit, on, serve, useHttp } from "zerva"
-
-import { useCounter } from "zerva-module-template"
 
 useHttp({
   port: valueToInteger(process.env.PORT, 8080),
@@ -38,6 +38,8 @@ on("counterIncrement", (counter) => {
   log.info("counter inc", counter)
 })
 
-useCounter()
+useCounter({
+  start: valueToInteger(process.env.MODULENAME_START),
+})
 
 serve()
