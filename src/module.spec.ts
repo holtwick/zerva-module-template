@@ -1,7 +1,6 @@
+import "cross-fetch/polyfill"
 import { Logger, LoggerNodeHandler, LogLevel } from "zeed"
-import { serve, emit, useHttp } from "zerva"
-
-import fetch from "node-fetch"
+import { emit, serve, useHttp } from "zerva"
 
 Logger.setHandlers([
   LoggerNodeHandler({
