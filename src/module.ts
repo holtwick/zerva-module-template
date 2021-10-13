@@ -1,7 +1,7 @@
 // (C)opyright 2021 Dirk Holtwick, holtwick.it. All rights reserved.
 
 import { Logger } from "zeed"
-import { on, emit, register } from "zerva"
+import { emit, on, register } from "zerva"
 
 const name = "counter"
 const log = Logger(`zerva:${name}`)
