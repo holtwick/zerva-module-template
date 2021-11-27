@@ -1,17 +1,5 @@
 import "cross-fetch/polyfill"
-import { Logger, LoggerNodeHandler, LogLevel } from "zeed"
 import { emit, serve, useHttp } from "zerva"
-
-Logger.setHandlers([
-  LoggerNodeHandler({
-    level: LogLevel.info,
-    filter: "*",
-    colors: true,
-    padding: 16,
-    nameBrackets: false,
-    levelHelper: false,
-  }),
-])
 
 describe("module", () => {
   beforeAll(async () => {
